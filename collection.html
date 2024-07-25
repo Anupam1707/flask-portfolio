@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{ name }}</title>
+</head>
+<body>
+  <h1>{{ name }}</h1>
+  <ul>
+    {% for document in documents %}
+      <li>{{ document }} <a href="{{ url_for('delete_document', name=name, id=document._id) }}">Delete</a></li>
+    {% endfor %}
+  </ul>
+  <h2>Add Document</h2>
+  <form method="POST" action="{{ url_for('add_document', name=name) }}">
+    <input type="text" name="key" placeholder="Key">
+    <input type="text" name="value" placeholder="Value">
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
