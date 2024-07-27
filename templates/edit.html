@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Edit Blog</h1>
+<form method="POST">
+    <label>Title</label>
+    <input type="text" name="title" value="{{ blog.title }}" required>
+
+    <label>Author</label>
+    <input type="text" name="author" value="{{ blog.author }}" required>
+
+    <label>Image URL</label>
+    <input type="text" name="imageurl" value="{{ blog.imageurl }}" required>
+
+    <label>Description</label>
+    <textarea name="description" required>{{ blog.description }}</textarea>
+
+    <label>Content</label>
+    <textarea name="content" required>{{ blog.content }}</textarea>
+
+    <label>Date</label>
+    <input type="date" name="date" value="{{ blog.date }}" required>
+
+    <label>Date (Readable Format)</label>
+    <input type="text" name="dateString" value="{{ blog.dateString }}" required> <!-- Added this line -->
+
+    <label>Category</label>
+    <input type="text" name="category" value="{{ blog.category }}" required>
+
+    <label>Pinned</label>
+    <select name="pinned">
+        <option value="true" {% if blog.pinned %}selected{% endif %}>Yes</option>
+        <option value="false" {% if not blog.pinned %}selected{% endif %}>No</option>
+    </select>
+
+    <button type="submit">Update</button>
+</form>
+{% endblock %}

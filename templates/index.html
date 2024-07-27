@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Admin Panel</title>
-</head>
-<body>
-  <h1>Collections</h1>
-  <ul>
-    {% for collection in collections %}
-      <li><a href="{{ url_for('collection', name=collection) }}">{{ collection }}</a></li>
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Blogs</h1>
+<ul>
+    {% for blog in blogs %}
+        <li>
+            <h2>{{ blog.title }}</h2>
+            <p>{{ blog.description }}</p>
+            <p>{{ blog.date }}</p>
+            <a href="{{ url_for('edit', id=blog._id) }}">Edit</a>
+            <a href="{{ url_for('delete', id=blog._id) }}">Delete</a>
+        </li>
     {% endfor %}
-  </ul>
-</body>
-</html>
+</ul>
+{% endblock %}

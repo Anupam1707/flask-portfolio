@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<h1>Create New Blog</h1>
+<form method="POST">
+    <label>Title</label>
+    <input type="text" name="title" required>
+
+    <label>Author</label>
+    <input type="text" name="author" required>
+
+    <label>Image URL</label>
+    <input type="text" name="imageurl" required>
+
+    <label>Description</label>
+    <textarea name="description" required></textarea>
+
+    <label>Content</label>
+    <textarea name="content" required></textarea>
+
+    <label>Date</label>
+    <input type="date" name="date" required>
+
+    <label>Date (Readable Format)</label>
+    <input type="text" name="dateString" required> <!-- Added this line -->
+
+    <label>Category</label>
+    <input type="text" name="category" required>
+
+    <label>Pinned</label>
+    <select name="pinned">
+        <option value="true">Yes</option>
+        <option value="false">No</option>
+    </select>
+
+    <button type="submit">Create</button>
+</form>
+{% endblock %}
