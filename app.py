@@ -4,13 +4,14 @@ from bson.objectid import ObjectId
 
 app = Flask(__name__)
 
-# Configure MongoDB
 app.config["MONGO_URI"] = "mongodb+srv://tiak:mongodb.ak17@portfolio-dataset.ha4l0ka.mongodb.net/blogs"
-mongo = PyMongo(app)
-db = mongo.db.blogs
+mongo_blog = PyMongo(app, uri="mongodb+srv://tiak:mongodb.ak17@portfolio-dataset.ha4l0ka.mongodb.net/blogs")
+mongo_users = PyMongo(app, uri="mongodb+srv://<username>:<password>@<your-cluster>.mongodb.net/users")
+##db = mongo.db.blogs
 
 @app.route('/')
 def index():
+    db = mongo_blogs.db.blogs
     blogs = db.find()
     return render_template('index.html', blogs=blogs)
 
