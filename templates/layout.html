@@ -8,8 +8,9 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('dashboard') }}">Home</a>
         <a href="{{ url_for('create') }}">Create New Blog</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
     <div class="container">
         {% block content %}{% endblock %}

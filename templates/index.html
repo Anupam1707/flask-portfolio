@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Blogs</h1>
+<h1>Documents</h1>
 <ul>
-    {% for blog in blogs %}
+    {% for data in dataset %}
         <li>
-            <h2>{{ blog.title }}</h2>
-            <p>{{ blog.description }}</p>
-            <p>{{ blog.date }}</p>
-            <a href="{{ url_for('edit', id=blog._id) }}">Edit</a>
-            <a href="{{ url_for('delete', id=blog._id) }}">Delete</a>
+            <h2>{{ data.description }}</h2>
+            <p>{{ data.title }}</p>
+            <p>{{ data.date }}</p>
+            <a type="submit" href="{{ url_for('edit', id=data._id) }}">Edit</a>
+            <form action="{{ url_for('delete', id=data._id) }}" method="POST" style="display:inline;">
+                <button type="submit">Delete</button>
+            </form>
         </li>
     {% endfor %}
 </ul>
