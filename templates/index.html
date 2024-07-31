@@ -1,16 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Documents</h1>
+<h1>{{ db_name|capitalize }}</h1>
 <ul>
     {% for data in dataset %}
         <li>
             <h2>{{ data.description }}</h2>
             <p>{{ data.title }}</p>
             <p>{{ data.date }}</p>
-            <a type="submit" href="{{ url_for('edit', id=data._id) }}">Edit</a>
+            <a class="btn" href="{{ url_for('edit', id=data._id) }}">Edit</a>
             <form action="{{ url_for('delete', id=data._id) }}" method="POST" style="display:inline;">
-                <button type="submit">Delete</button>
+                <button type="submit" class="btn">Delete</button>
             </form>
         </li>
     {% endfor %}

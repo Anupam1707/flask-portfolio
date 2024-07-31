@@ -8,8 +8,9 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url_for('dashboard') }}">Home</a>
-        <a href="{{ url_for('create') }}">Create New Blog</a>
+        <a href="{{ url_for('dashboard') }}">Select Database and Collection</a>
+        <a href="{{ url_for('list_documents', db_name=session.get('db_name')) }}">Dashboard</a>
+        <a href="{{ url_for('create') }}">Add New {{ session['collection_name'][:-1].capitalize() }}</a>
         <a href="{{ url_for('logout') }}">Logout</a>
     </nav>
     <div class="container">

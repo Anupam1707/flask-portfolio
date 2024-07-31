@@ -1,0 +1,73 @@
+/* global.css */
+
+/* Reset some default browser styles */
+body, h1, h2, p, form, input, button, a {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Common styles for body */
+body {
+    line-height: 1.6;
+    color: #333;
+}
+
+/* General form styles */
+form {
+    margin-top: 20px;
+}
+
+input[type="text"], button, a.btn {
+    padding: 10px;
+    margin: 10px 0;
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* General button styles */
+button, a.btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover, a.btn:hover {
+    background-color: #0056b3;
+}
+
+/* Inline form button styles */
+form button {
+    display: inline-block;
+    width: auto;
+}
+
+/* Ensure the a.btn looks like a button */
+a.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+a.btn:hover {
+    background-color: #0056b3;
+}
