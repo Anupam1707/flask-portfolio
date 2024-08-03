@@ -5,8 +5,8 @@
 <ul>
     {% for data in dataset %}
         <li>
-            <h2>{{ data.description }}</h2>
-            <p>{{ data.title }}</p>
+            <h2>{{ data.title }}</h2>
+            <p>{{ data.description }}</p>
             <p>{{ data.date }}</p>
             <a class="btn" href="{{ url_for('edit', id=data._id) }}">Edit</a>
             <form action="{{ url_for('delete', id=data._id) }}" method="POST" style="display:inline;">
