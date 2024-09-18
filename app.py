@@ -139,6 +139,8 @@ def edit(id):
                 }
 
             collection.update_one({'_id': doc_id}, {'$set': updated_data})
+            print("Data Updated Successfully")
+            print("DB_Name", db_name)
             return redirect(url_for('list_documents', db_name=db_name))
 
         return render_template('edit.html', document=document, db_name=db_name)
