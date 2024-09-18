@@ -32,7 +32,7 @@ def dashboard():
 @app.route('/<db_name>')
 def list_documents(db_name):
     if '.' in db_name:
-        db_name = db_name.replace('.', '\\.')
+        db_name = db_name.replace('.', '')
     collection_name = session.get('collection_name')
 
     if collection_name and 'username' in session:
