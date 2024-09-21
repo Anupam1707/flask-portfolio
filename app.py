@@ -4,20 +4,17 @@ from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'  # Replace with your own secret key
+app.secret_key = 'your_secret_key'
 
-# MongoDB connection setup
 client = MongoClient('mongodb+srv://tiak:mongodb.ak17@portfolio-dataset.ha4l0ka.mongodb.net/')
 
 db_users = client['users']
 users_collection = db_users['users']
 
-# Route to render the main page
 @app.route('/')
 def login():
     return render_template('login.html')
 
-# Route for main page to get database and collection names
 @app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
     if request.method == 'POST':
@@ -28,7 +25,6 @@ def dashboard():
         return redirect(url_for('list_documents', db_name=db_name))
     return render_template('dashboard.html')
 
-# Route for displaying documents based on selected DB and Collection
 @app.route('/<db_name>')
 def list_documents(db_name):
     if '.' in db_name:
@@ -43,7 +39,6 @@ def list_documents(db_name):
     else:
         return redirect(url_for('dashboard'))
 
-# Route for creating a new document (blog, project, certificate)
 @app.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST' and 'username' in session:
@@ -87,7 +82,6 @@ def create():
             return redirect(url_for('list_documents', db_name=db_name))
     return render_template('create.html')
 
-# Route for editing a document (blog, project, certificate)
 @app.route('/edit/<id>', methods=['GET', 'POST'])
 def edit(id):
     if 'username' in session:
@@ -147,7 +141,6 @@ def edit(id):
     else:
         return render_template('login.html')
 
-# Route for deleting a document (blog, project, certificate)
 @app.route('/delete/<id>', methods=['POST'])
 def delete(id):
     db_name = session.get('db_name')
@@ -158,7 +151,6 @@ def delete(id):
         collection.delete_one({'_id': ObjectId(id)})
     return redirect(url_for('list_documents', db_name=db_name))
 
-# Route to verify login credentials
 @app.route('/api/login', methods=['POST'])
 def api_login():
     data = request.json
@@ -173,7 +165,6 @@ def api_login():
     else:
         return jsonify({'success': False, 'message': 'Unable to Log you in.'})
 
-# Logout route
 @app.route('/logout')
 def logout():
     session.pop('username', None)
